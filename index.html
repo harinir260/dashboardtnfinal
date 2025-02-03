@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSHIELD - SCAM DETECTION DASHBOARD</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2 id="side-bar-heading">ADSHIELD</h2>
+        </div>
+        <ul class="nav-items">
+            <li class="nav-item active">
+                <div class="nav-icon">🏠</div>
+                <span>Home</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">📋</div>
+                <span>Scam Management</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">🔍</div>
+                <span>Risk Analysis</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">🛡️</div>
+                <span>Fraud Insights</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">🌍</div>
+                <span>Geographic Insights</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">🕸️</div>
+                <span>Network Analysis</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">📊</div>
+                <span>Reports</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">🚨</div>
+                <span>Alerts</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <span>Settings</span>
+            </li>
+            <li class="nav-item">
+                <div class="nav-icon">❓</div>
+                <span>Help</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- Header -->
+            <div class="row mb-4">
+                <div class="col">
+                    <h1 class="h3">Scam Detection Overview</h1>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-dark" id="toggleTheme">🌙 Dark Mode</button>
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="card metric-card">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Total Scams</h6>
+                            <h2 class="card-title mb-0">1,234</h2>
+                            <small class="text-success">↑ 12% from last month</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card metric-card">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Fraudulent Claims</h6>
+                            <h2 class="card-title mb-0">89</h2>
+                            <small class="text-danger">↑ 5% from last month</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card metric-card">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Losses Prevented</h6>
+                            <h2 class="card-title mb-0">₹2.1M</h2>
+                            <small class="text-success">↑ 15% from last month</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card metric-card">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Anomalies Detected</h6>
+                            <h2 class="card-title mb-0">156</h2>
+                            <small class="text-warning">↑ 8% from last month</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="chart-container">
+                        <h5>Fraud Trends Over Time</h5>
+                        <select class="form-select mb-3" style="width: auto;">
+                            <option>All Regions</option>
+                            <option>North</option>
+                            <option>South</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="chart-container">
+                        <h5>User Profiling</h5>
+                        <canvas id="accuracyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="chart-container">
+                        <h5>Fraud Categories by Region</h5>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Scam Categories</h5>
+                        </div>
+                        <div class="card-body alert-ticker">
+                            <div class="alert alert-warning">
+                                Claim #12345 - Stock Market Scam
+                                <br><small class="text-muted">2 minutes ago</small>
+                            </div>
+                            <div class="alert alert-danger">
+                                Claim #12346 - Investment Scams
+                                <br><small class="text-muted">5 minutes ago</small>
+                            </div>
+                            <div class="alert alert-warning">
+                                Claim #12347 - Lottery Scams
+                                <br><small class="text-muted">10 minutes ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Claims Table -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Fraudulent Claims</h5>
+                    <button class="btn btn-primary btn-sm">Export CSV</button>
+                </div>
+                <div class="card-body">
+                    <table id="fraudTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Claim ID</th>
+                                <th>Policy ID</th>
+                                <th>Fraud Type</th>
+                                <th>Detection Date</th>
+                                <th>Status</th>
+                                <th>Losses Prevented</th>
+                                <th>Region</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CL001</td>
+                                <td>POL123</td>
+                                <td>Signature Forgery</td>
+                                <td>2023-12-22</td>
+                                <td><span class="badge bg-warning">Under Investigation</span></td>
+                                <td>₹50,000</td>
+                                <td>Maharashtra</td>
+                            </tr>
+                            <tr>
+                                <td>CL002</td>
+                                <td>POL124</td>
+                                <td>Document Tampering</td>
+                                <td>2023-12-21</td>
+                                <td><span class="badge bg-danger">Confirmed Fraud</span></td>
+                                <td>₹75,000</td>
+                                <td>Gujarat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
